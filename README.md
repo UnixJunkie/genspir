@@ -1,7 +1,7 @@
 genspir
 =======
 
-OCaml implementatiob of the generalized spiral:
+OCaml implementation of the generalized spiral:
 a function to generate almost uniformly points on a sphere.
 
 bibliography
