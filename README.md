@@ -11,3 +11,9 @@ bibliography
 Saff, E.B. & Kuijlaars, A.B.J. (1997).
 The Mathematical Intelligencer, 19, 5-11,
 http://www.math.vanderbilt.edu/~esaff/texts/161.pdf
+
+TODO
+====
+
+I need to release my 3D vector library first
+because it is a dependency of this one
