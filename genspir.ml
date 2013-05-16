@@ -32,8 +32,6 @@
 
 let pi = 4.0 *. atan 1.0
 
-let compose f g x = f (g x)
-
 let h k n =
   -1. +. ((2. *. (k -. 1.)) /.
           (n -. 1.))
@@ -49,7 +47,7 @@ let psi k n psi_km1 =
   mod_float (psi_km1 +. (3.6 /. ((sqrt n) *. (sqrt (1. -. hk2)))))
             (2. *. pi)
 
-(* return the list of generalized spiral terms for k in [1..n] *)
+(* generalized spiral terms for k in [1..n] in spherical coordinates *)
 let genspir_spherical n =
   let rec generalized_spiral_priv k acc =
     if k = n then
@@ -67,10 +65,11 @@ let genspir_spherical n =
     else
       generalized_spiral_priv 2. first_term
 
-(* spherical to cartesian coordinates *)
-let to_xyz (theta, psi) =
-  let ct, st, cp, sp = cos theta, sin theta, cos psi, sin psi in
-  (st *. cp, st *. sp, -.ct)
-
+(* generalized spiral terms for k in [1..n] in cartesian coordinates *)
 let genspir_cartesian n =
+  (* spherical to cartesian *)
+  let to_xyz (theta, psi) =
+    let ct, st, cp, sp = cos theta, sin theta, cos psi, sin psi in
+    (st *. cp, st *. sp, -.ct)
+  in
   List.rev_map to_xyz (genspir_spherical n)
