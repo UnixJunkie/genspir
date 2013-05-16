@@ -30,8 +30,6 @@
    The Mathematical Intelligencer, 19, 5-11,
    http://www.math.vanderbilt.edu/~esaff/texts/161.pdf *)
 
-module V3 = Vector3
-
 let pi = 4.0 *. atan 1.0
 
 let compose f g x = f (g x)
@@ -52,7 +50,7 @@ let psi k n psi_km1 =
             (2. *. pi)
 
 (* return the list of generalized spiral terms for k in [1..n] *)
-let generalized_spiral n =
+let genspir_spherical n =
   let rec generalized_spiral_priv k acc =
     if k = n then
       ((theta k n, 0.) :: acc)
@@ -74,17 +72,5 @@ let to_xyz (theta, psi) =
   let ct, st, cp, sp = cos theta, sin theta, cos psi, sin psi in
   (st *. cp, st *. sp, -.ct)
 
-let unit_vectors nb_unit_vectors =
-  List.rev_map
-    (compose V3.of_triplet to_xyz)
-    (generalized_spiral (float_of_int nb_unit_vectors))
-
-let ray_directions nb_unit_vectors =
-  let res = Array.create (3 * nb_unit_vectors) 0. in
-  BatList.iteri
-    V3.(fun i v3 ->
-          res.(3*i    ) <- v3.x;
-          res.(3*i + 1) <- v3.y;
-          res.(3*i + 2) <- v3.z)
-    (unit_vectors nb_unit_vectors);
-  res
+let genspir_cartesian n =
+  List.rev_map to_xyz (genspir_spherical n)
