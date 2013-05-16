@@ -15,4 +15,4 @@ http://www.math.vanderbilt.edu/~esaff/texts/161.pdf
 TODO
 ====
 
-nothing here
+ - package for OPAM
