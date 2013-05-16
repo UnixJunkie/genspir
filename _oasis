@@ -1,0 +1,12 @@
+OASISFormat: 0.3
+Name: genspir
+Version: 0.1
+Synopsis: function to generate almost uniformly points on a sphere
+Authors: Francois Berenger
+License: BSD3
+Plugins: META (0.3)
+
+Library genspir
+  Path: .
+  BuildTools: ocamlbuild
+  Modules: Genspir
