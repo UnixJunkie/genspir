@@ -49,18 +49,19 @@ let psi k n psi_km1 =
 
 (* generalized spiral terms for k in [1..n] in spherical coordinates *)
 let genspir_spherical n =
+  let m = float_of_int n in
   let rec generalized_spiral_priv k acc =
-    if k = n then
-      ((theta k n, 0.) :: acc)
+    if k = m then
+      ((theta k m, 0.) :: acc)
     else
-      let psi_k = psi k n (snd (List.hd acc)) in
-      generalized_spiral_priv (k +. 1.) ((theta k n, psi_k) :: acc)
+      let psi_k = psi k m (snd (List.hd acc)) in
+      generalized_spiral_priv (k +. 1.) ((theta k m, psi_k) :: acc)
   in
-  if n < 1. then
-    failwith (Printf.sprintf "generalized_spiral: invalid range: %f" n)
+  if m < 1. then
+    failwith (Printf.sprintf "generalized_spiral: invalid range: %f" m)
   else
-    let first_term = [(theta 1. n, 0.)] in
-    if n = 1. then
+    let first_term = [(theta 1. m, 0.)] in
+    if m = 1. then
       first_term
     else
       generalized_spiral_priv 2. first_term
