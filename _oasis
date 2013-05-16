@@ -6,7 +6,15 @@ Authors: Francois Berenger
 License: BSD3
 Plugins: META (0.3)
 
+BuildTools: ocamlbuild
+
 Library genspir
   Path: .
-  BuildTools: ocamlbuild
   Modules: Genspir
+
+Executable example
+  Path: .
+  Install: false
+  MainIs: example.ml
+  CompiledObject: best
+  BuildDepends: genspir
