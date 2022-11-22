@@ -10,7 +10,7 @@ bibliography
 "Distributing many points on a sphere"
 Saff, E.B. & Kuijlaars, A.B.J. (1997).
 The Mathematical Intelligencer, 19, 5-11,
-http://www.math.vanderbilt.edu/~esaff/texts/161.pdf
+https://doi.org/10.1007/BF03024331
 
 TODO
 ====
